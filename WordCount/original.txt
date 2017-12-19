@@ -1,0 +1,86 @@
+
+import java.util.Scanner;
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author tIpz
+ */
+public class courseAverage {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        int sum=0, counter, n, m=0, sumCredit=0;
+        Scanner input = new Scanner(System.in);
+        
+        do
+        {
+             System.out.print("Enter number of subjects: "); 
+             n = input.nextInt();
+            double sumScore=0, average;sumCredit=0;
+            double score[]=new double[n];
+            double credit[]=new double[n];
+            double pdt[]=new double[n];
+            String[] courseName = new String[100];
+            String[] courseName2 = new String[100];
+            
+            for(counter=0;n>counter;counter++)
+            {
+                System.out.print("Enter your course name: ");
+                courseName[counter] = input.next();
+                courseName2[counter] = input.next();
+                do
+                {
+                    System.out.println("--- Please enter a score below or equall to 100 ---");
+                    System.out.print("Enter score: ");
+                    score[counter]= input.nextInt();
+                
+                }while(score[counter]>100);
+                    
+                do
+                {
+                    System.out.println("--- Please enter a credit hour below or equall to 4 ---");
+                    System.out.print("Enter credit hours: ");
+                    credit[counter]= input.nextInt();
+                }while(credit[counter]>4);
+                        
+                pdt[counter]= score[counter]*credit[counter];
+                sumCredit += credit[counter];
+                sumScore += pdt[counter];
+            }
+            /*System.out.println(" ");
+            System.out.println("***** Pick an activity from the meun below *****");
+            System.out.println("[1]Display result\t"+"[2]Total credit hours");
+            System.out.println("[3]Calculate Average\t"+"[4]Exit program");
+            System.out.print("--> ");
+            m = input.nextInt();*/
+            System.out.println(" ");
+            System.out.println("SCORES\t"
+                               +"CREDIT\t"
+                               +"CUMLATIVE\t"
+                               +"COURSE NAME");
+            average = sumScore/sumCredit;
+            for(counter=0;n>counter;counter++)
+            {
+                System.out.println(score[counter]
+                                    +"\t"+credit[counter]
+                                    +"\t"+pdt[counter]
+                                    +"\t\t"+courseName[counter]
+                                    +" "+courseName2[counter]);
+            }
+            System.out.println(" ");
+            System.out.println("Total credit hours is "+sumCredit);
+            System.out.println("Your average is "+average);
+            System.out.println(" ");
+            
+        }while(m<4);
+    }
+    
+}
